@@ -2,42 +2,57 @@
 
 import { savePlayerData, loadPlayerData } from "./firebase.js";
 
-const KEY = "bushunter-player";
-const BUSES = "bushunter-buses";
+const PLAYER_KEY = "bushunter-player";
+const BUSES_KEY = "bushunter-buses";
 
-/*
-----------------------------------
-Spieler speichern
-----------------------------------
-*/
+// ==============================
+// Spieler
+// ==============================
 
 export function savePlayer(name) {
-    localStorage.setItem(KEY, name);
+    localStorage.setItem(PLAYER_KEY, name);
 }
 
 export function loadPlayer() {
-    return localStorage.getItem(KEY);
+    return localStorage.getItem(PLAYER_KEY);
 }
 
-/*
-----------------------------------
-Busse lokal speichern
-----------------------------------
-*/
+export function removePlayer() {
+    localStorage.removeItem(PLAYER_KEY);
+}
+
+// ==============================
+// Fahrzeuge lokal
+// ==============================
 
 export function saveLocal(collected) {
-    localStorage.setItem(BUSES, JSON.stringify(collected));
+    localStorage.setItem(BUSES_KEY, JSON.stringify(collected));
 }
 
 export function loadLocal() {
-    return JSON.parse(localStorage.getItem(BUSES)) || [];
+
+    const data = localStorage.getItem(BUSES_KEY);
+
+    if (!data) {
+        return [];
+    }
+
+    try {
+        return JSON.parse(data);
+    } catch (err) {
+        console.error("Fehler beim Laden der lokalen Daten:", err);
+        return [];
+    }
+
 }
 
-/*
-----------------------------------
-Busse online speichern
-----------------------------------
-*/
+export function clearLocal() {
+    localStorage.removeItem(BUSES_KEY);
+}
+
+// ==============================
+// Fahrzeuge online
+// ==============================
 
 export async function saveOnline(player, collected) {
 
@@ -55,11 +70,9 @@ export async function saveOnline(player, collected) {
 
 }
 
-/*
-----------------------------------
-Busse laden
-----------------------------------
-*/
+// ==============================
+// Fahrzeuge laden
+// ==============================
 
 export async function loadCollected(player) {
 
@@ -67,7 +80,7 @@ export async function loadCollected(player) {
 
         const online = await loadPlayerData(player);
 
-        if (online.length > 0) {
+        if (Array.isArray(online) && online.length > 0) {
 
             saveLocal(online);
 
@@ -77,7 +90,7 @@ export async function loadCollected(player) {
 
     } catch (err) {
 
-        console.log("Offline-Modus");
+        console.warn("Offline-Modus aktiv");
 
     }
 

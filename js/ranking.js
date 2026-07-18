@@ -1,7 +1,6 @@
 // js/ranking.js
 
-import { collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import { db } from "./firebase.js";
+import { watchRanking } from "./firebase.js";
 
 let unsubscribe = null;
 
@@ -15,74 +14,50 @@ export function initRanking() {
         unsubscribe();
     }
 
-    const q = query(
-        collection(db, "players"),
-        orderBy("score", "desc")
-    );
-
-    unsubscribe = onSnapshot(q, (snapshot) => {
+    unsubscribe = watchRanking((players) => {
 
         container.innerHTML = "";
 
-        if (snapshot.empty) {
+        if (players.length === 0) {
 
             container.innerHTML = `
-                <div class="rankingEmpty">
-                    Noch keine Fahrer vorhanden.
-                </div>
+                <p>Noch keine Spieler vorhanden.</p>
             `;
 
             return;
+
         }
 
-        let platz = 1;
-
-        snapshot.forEach((doc) => {
-
-            const fahrer = doc.data();
+        players.forEach((player, index) => {
 
             const card = document.createElement("div");
             card.className = "rankingCard";
 
-            let medal = "";
+            let medal = `#${index + 1}`;
 
-            if (platz === 1) medal = "🥇";
-            else if (platz === 2) medal = "🥈";
-            else if (platz === 3) medal = "🥉";
-            else medal = "#" + platz;
-
-            const score = fahrer.score || 0;
+            if (index === 0) medal = "🥇";
+            if (index === 1) medal = "🥈";
+            if (index === 2) medal = "🥉";
 
             const updated =
-                fahrer.updated && fahrer.updated.toDate
-                    ? fahrer.updated.toDate().toLocaleString("de-DE")
+                player.updated?.toDate
+                    ? player.updated.toDate().toLocaleString("de-DE")
                     : "-";
 
             card.innerHTML = `
                 <div class="rankingPlace">${medal}</div>
 
                 <div class="rankingPlayer">
-
-                    <div class="playerName">
-                        ${fahrer.player}
-                    </div>
-
-                    <div class="playerDate">
-                        ${updated}
-                    </div>
-
+                    <div class="playerName">${player.player}</div>
+                    <div class="playerDate">${updated}</div>
                 </div>
 
                 <div class="rankingScore">
-
-                    🚍 ${score}
-
+                    🚌 ${player.score}
                 </div>
             `;
 
             container.appendChild(card);
-
-            platz++;
 
         });
 

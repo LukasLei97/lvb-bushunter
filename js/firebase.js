@@ -97,3 +97,37 @@ export function watchPlayer(playerName, callback) {
     });
 
 }
+import {
+    collection,
+    query,
+    orderBy
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/*
+-----------------------------------
+Live-Rangliste
+-----------------------------------
+*/
+
+export function watchRanking(callback) {
+
+    const q = query(
+        collection(db, "players"),
+        orderBy("score", "desc")
+    );
+
+    return onSnapshot(q, (snapshot) => {
+
+        const ranking = [];
+
+        snapshot.forEach((doc) => {
+
+            ranking.push(doc.data());
+
+        });
+
+        callback(ranking);
+
+    });
+
+}
