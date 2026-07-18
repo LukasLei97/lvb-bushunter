@@ -1,32 +1,66 @@
-// ===== Fahrer =====
+// js/player.js
 
-const STORAGE_KEY = "bushunter-player";
-
-export function getPlayer() {
-    return localStorage.getItem(STORAGE_KEY);
-}
-
-export function setPlayer(name) {
-    localStorage.setItem(STORAGE_KEY, name);
-}
-
-export function hasPlayer() {
-    return getPlayer() !== null;
-}
+import { savePlayer, loadPlayer } from "./storage.js";
 
 export function askPlayer() {
 
-    if (hasPlayer()) return getPlayer();
+    let player = loadPlayer();
 
-    const name = prompt(
-        "Wie heißt du?\n\nBeispiel:\nLukas\nMarcel\nSven\nTobi"
-    );
-
-    if (!name) {
-        return askPlayer();
+    if (player) {
+        return player;
     }
 
-    setPlayer(name);
+    const fahrer = [
+        "Lukas",
+        "Fahrer 2",
+        "Fahrer 3",
+        "Fahrer 4"
+    ];
 
-    return name;
+    while (true) {
+
+        player = prompt(
+`Willkommen bei BusHunter!
+
+Bitte gib deinen Fahrernamen ein:
+
+${fahrer.join("\n")}`
+        );
+
+        if (player === null) {
+
+            alert("Ein Fahrer muss ausgewählt werden.");
+
+            continue;
+
+        }
+
+        player = player.trim();
+
+        if (fahrer.includes(player)) {
+
+            savePlayer(player);
+
+            return player;
+
+        }
+
+        alert("Unbekannter Fahrer.");
+
+    }
+
+}
+
+export function logout() {
+
+    localStorage.removeItem("bushunter-player");
+
+    location.reload();
+
+}
+
+export function currentPlayer() {
+
+    return loadPlayer();
+
 }

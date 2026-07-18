@@ -1,15 +1,11 @@
 import { initVehicles, renderVehicles } from "./vehicles.js";
 import { setSearch } from "./search.js";
-import { askPlayer } from "./player.js";
+import { initRanking } from "./ranking.js";
+import { showLogin } from "./login.js";
 
-// ===== Fahrer =====
-
-const player = askPlayer();
-
-document.getElementById("welcomeText").textContent =
-`Hallo ${player} 👋`;
-
-// ===== Navigation =====
+// ===============================
+// Navigation
+// ===============================
 
 const pages = {
     home: document.getElementById("homePage"),
@@ -25,40 +21,69 @@ const buttons = {
     settings: document.getElementById("navSettings")
 };
 
-function showPage(page) {
+function showPage(page){
 
-    Object.values(pages).forEach(p => p.hidden = true);
-    Object.values(buttons).forEach(b => b.classList.remove("active"));
+    Object.values(pages).forEach(p=>{
+        if(p)p.hidden=true;
+    });
 
-    pages[page].hidden = false;
-    buttons[page].classList.add("active");
+    Object.values(buttons).forEach(b=>{
+        if(b)b.classList.remove("active");
+    });
+
+    if(pages[page]){
+        pages[page].hidden=false;
+    }
+
+    if(buttons[page]){
+        buttons[page].classList.add("active");
+    }
+
 }
 
-buttons.home.onclick = () => showPage("home");
-buttons.stats.onclick = () => showPage("stats");
-buttons.ranking.onclick = () => showPage("ranking");
-buttons.settings.onclick = () => showPage("settings");
+buttons.home.onclick=()=>showPage("home");
+buttons.stats.onclick=()=>showPage("stats");
+buttons.ranking.onclick=()=>showPage("ranking");
+buttons.settings.onclick=()=>showPage("settings");
 
-// ===== Suche =====
+// ===============================
+// Suche
+// ===============================
 
-const search = document.getElementById("search");
+const search=document.getElementById("search");
 
-search.addEventListener("input", (e) => {
+if(search){
 
-    setSearch(e.target.value);
+    search.addEventListener("input",(e)=>{
 
-    renderVehicles();
+        setSearch(e.target.value);
 
-});
+        renderVehicles();
 
-// ===== Start =====
+    });
 
-async function start() {
+}
+
+// ===============================
+// App starten
+// ===============================
+
+showLogin(async(player)=>{
+
+    const welcome=document.getElementById("welcomeText");
+
+    if(welcome){
+
+        welcome.textContent=`Hallo ${player} 👋`;
+
+    }
 
     showPage("home");
 
-    await initVehicles();
+    await initVehicles(player);
 
-}
+    initRanking();
 
-start();
+    console.log("BusHunter gestartet");
+
+});

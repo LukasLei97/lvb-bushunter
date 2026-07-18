@@ -1,138 +1,220 @@
-import { loadCollected, saveCollected } from "./storage.js";
+import { loadCollected, saveOnline } from "./storage.js";
 import { updateDashboard } from "./stats.js";
 import { getSearch } from "./search.js";
+import { watchPlayer } from "./firebase.js";
 
-let vehicles = [];
-let collected = [];
+let fahrzeuge = [];
+let gesammelt = [];
+let spieler = "";
 
-export async function initVehicles() {
+const liste = document.getElementById("vehicleList");
 
-    const response = await fetch("../fahrzeuge.json");
-    vehicles = await response.json();
+export async function initVehicles(playerName) {
 
-    collected = loadCollected();
+    spieler = playerName;
+
+    const response = await fetch("fahrzeuge.json");
+    fahrzeuge = await response.json();
+
+    gesammelt = await loadCollected(spieler);
 
     renderVehicles();
+
+    watchPlayer(spieler, (online) => {
+
+        gesammelt = online;
+
+        renderVehicles();
+
+    });
+
 }
 
 export function renderVehicles() {
 
-    const list = document.getElementById("vehicleList");
-    const typeStats = document.getElementById("typeStats");
+    liste.innerHTML = "";
 
-    list.innerHTML = "";
-    typeStats.innerHTML = "";
+    const suche = getSearch().toLowerCase();
 
-    const filter = getSearch();
+    const gruppen = {};
 
-    const groups = {};
-
-    vehicles.forEach(vehicle => {
-
-        const number = vehicle.nummer.toLowerCase();
-        const type = vehicle.typ.toLowerCase();
+    fahrzeuge.forEach(bus => {
 
         if (
-            filter &&
-            !number.includes(filter) &&
-            !type.includes(filter)
+            suche &&
+            !bus.nummer.toLowerCase().includes(suche) &&
+            !bus.typ.toLowerCase().includes(suche)
         ) return;
 
-        if (!groups[vehicle.typ]) {
-            groups[vehicle.typ] = [];
+        if (!gruppen[bus.typ]) {
+
+            gruppen[bus.typ] = [];
+
         }
 
-        groups[vehicle.typ].push(vehicle);
+        gruppen[bus.typ].push(bus);
+
     });
 
-    Object.keys(groups).sort().forEach(type => {
+    Object.keys(gruppen)
+        .sort()
+        .forEach(typ => {
 
-        const details = document.createElement("details");
-        details.open = true;
+            const details = document.createElement("details");
 
-        const summary = document.createElement("summary");
-        summary.textContent =
-            `${type} (${groups[type].length})`;
+            details.open = true;
 
-        details.appendChild(summary);
+            const summary = document.createElement("summary");
 
-        let done = 0;
+            summary.textContent =
+                typ + " (" + gruppen[typ].length + ")";
 
-        groups[type].forEach(vehicle => {
+            details.appendChild(summary);
 
-            const checked =
-                collected.includes(vehicle.nummer);
+            gruppen[typ].forEach(bus => {
 
-            if (checked) done++;
+                const card = document.createElement("div");
 
-            const card = document.createElement("div");
-            card.className = "vehicle";
+                card.className = "vehicle";
 
-            if (checked) {
-                card.classList.add("checked");
-            }
+                if (gesammelt.includes(bus.nummer)) {
 
-            card.innerHTML = `
-                <div class="vehicle-info">
-                    <div class="vehicle-number">
-                        🚌 ${vehicle.nummer}
-                    </div>
-                    <div class="vehicle-type">
-                        ${vehicle.typ}
-                    </div>
-                </div>
+                    card.classList.add("done");
 
-                <div class="checkmark">
-                    ${checked ? "✅" : "⭕"}
-                </div>
-            `;
-
-            card.onclick = () => {
-
-                if (checked) {
-                    collected =
-                        collected.filter(x => x !== vehicle.nummer);
-                } else {
-                    collected.push(vehicle.nummer);
                 }
 
-                saveCollected(collected);
-                renderVehicles();
+                const nummer = document.createElement("div");
 
-            };
+                nummer.className = "number";
 
-            details.appendChild(card);
+                nummer.textContent = bus.nummer;
+
+                const status = document.createElement("div");
+
+                status.className = "status";
+
+                status.textContent =
+                    gesammelt.includes(bus.nummer)
+                        ? "✅ Gefahren"
+                        : "⬜ Offen";
+
+                card.appendChild(nummer);
+
+                card.appendChild(status);
+
+                card.onclick = async () => {
+
+                    toggleBus(bus.nummer);
+
+                };
+
+                details.appendChild(card);
+
+            });
+
+            liste.appendChild(details);
 
         });
 
-        list.appendChild(details);
+    updateStats();
 
-        const percent =
-            Math.round((done / groups[type].length) * 100);
+}
+function toggleBus(busNummer) {
 
-        const stat = document.createElement("div");
+    if (gesammelt.includes(busNummer)) {
 
-        stat.className = "type-stat";
+        gesammelt = gesammelt.filter(nr => nr !== busNummer);
 
-        stat.innerHTML = `
-            <div class="type-header">
-                <span>${type}</span>
-                <span>${done}/${groups[type].length}</span>
-            </div>
+    } else {
 
-            <div class="type-progress">
-                <div class="type-fill"
-                    style="width:${percent}%">
-                </div>
-            </div>
-        `;
+        gesammelt.push(busNummer);
 
-        typeStats.appendChild(stat);
+    }
+
+    saveOnline(spieler, gesammelt);
+
+    renderVehicles();
+
+}
+
+function updateStats() {
+
+    const gesamt = fahrzeuge.length;
+
+    const gefahren = gesammelt.length;
+
+    updateDashboard(gesamt, gefahren);
+
+    updateTypeStats();
+
+}
+
+function updateTypeStats() {
+
+    const container = document.getElementById("typeStats");
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    const typen = {};
+
+    fahrzeuge.forEach(bus => {
+
+        if (!typen[bus.typ]) {
+
+            typen[bus.typ] = {
+                gesamt: 0,
+                gefahren: 0
+            };
+
+        }
+
+        typen[bus.typ].gesamt++;
+
+        if (gesammelt.includes(bus.nummer)) {
+
+            typen[bus.typ].gefahren++;
+
+        }
 
     });
 
-    updateDashboard(
-        vehicles.length,
-        collected.length
-    );
+    Object.keys(typen)
+        .sort()
+        .forEach(typ => {
+
+            const daten = typen[typ];
+
+            const prozent = Math.round(
+                (daten.gefahren / daten.gesamt) * 100
+            );
+
+            const card = document.createElement("div");
+
+            card.className = "typeCard";
+
+            card.innerHTML = `
+
+                <h3>${typ}</h3>
+
+                <p>${daten.gefahren} / ${daten.gesamt}</p>
+
+                <div class="typeProgress">
+
+                    <div
+                        class="typeProgressBar"
+                        style="width:${prozent}%">
+                    </div>
+
+                </div>
+
+                <span>${prozent}%</span>
+
+            `;
+
+            container.appendChild(card);
+
+        });
+
 }
