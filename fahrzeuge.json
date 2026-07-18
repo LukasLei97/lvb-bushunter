@@ -1,1 +1,726 @@
-
+[
+  {
+    "nummer": "1221",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1222",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1223",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1224",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1225",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1226",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1227",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1228",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1229",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1230",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1231",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1232",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1233",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1234",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1235",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1236",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1237",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1238",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1239",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1240",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1241",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1242",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1243",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1244",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1245",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1246",
+    "typ": "NB Solaris 2020"
+  },
+  {
+    "nummer": "1247",
+    "typ": "NB Solaris 20/24"
+  },
+  {
+    "nummer": "1248",
+    "typ": "NB Solaris 20/24"
+  },
+  {
+    "nummer": "1249",
+    "typ": "NB Solaris 20/24"
+  },
+  {
+    "nummer": "1250",
+    "typ": "NB Solaris 20/24"
+  },
+  {
+    "nummer": "1251",
+    "typ": "NB Solaris 20/24"
+  },
+  {
+    "nummer": "1253",
+    "typ": "NB Solaris 20/24"
+  },
+  {
+    "nummer": "1254",
+    "typ": "NB Solaris 20/24"
+  },
+  {
+    "nummer": "2322",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2323",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2324",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2325",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2326",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2327",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2328",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2329",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2330",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2331",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2332",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2333",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2334",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2335",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2336",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2337",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2338",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2339",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2340",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2341",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "2342",
+    "typ": "Elektro NB VDL"
+  },
+  {
+    "nummer": "4105",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4106",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4107",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4108",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4109",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4110",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4111",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4112",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4113",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4114",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4115",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4116",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4117",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4118",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4119",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4120",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4121",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4122",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4123",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4124",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4125",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4126",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4127",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4128",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4129",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4130",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4135",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4136",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4137",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4138",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4139",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4140",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4141",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4142",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4143",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4144",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4145",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4146",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4147",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "4148",
+    "typ": "GB Solaris 12/13"
+  },
+  {
+    "nummer": "1000",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1003",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1006",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1007",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1009",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1016",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1017",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1018",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1019",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1021",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1022",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1023",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1024",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1025",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1026",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1027",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1029",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1031",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1032",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1033",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1034",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1035",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1036",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1037",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1038",
+    "typ": "GB Solaris 16/17"
+  },
+  {
+    "nummer": "1200",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1203",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1204",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1205",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1206",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1207",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1208",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1209",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1210",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1211",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1212",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1213",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1214",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1215",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1216",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1217",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1218",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1219",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1220",
+    "typ": "GB Solaris 2020"
+  },
+  {
+    "nummer": "1042",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1043",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1044",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1045",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1046",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1047",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1048",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1049",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1050",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1051",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1052",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1053",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1054",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1055",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1056",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1057",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1058",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1059",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1060",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1061",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1062",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1063",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1064",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1065",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1066",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1067",
+    "typ": "GB Solaris 2024"
+  },
+  {
+    "nummer": "1150",
+    "typ": "VDL GBEL"
+  },
+  {
+    "nummer": "1151",
+    "typ": "VDL GBEL"
+  },
+  {
+    "nummer": "1152",
+    "typ": "VDL GBEL"
+  },
+  {
+    "nummer": "1153",
+    "typ": "VDL GBEL"
+  },
+  {
+    "nummer": "1154",
+    "typ": "VDL GBEL"
+  },
+  {
+    "nummer": "1155",
+    "typ": "VDL GBEL"
+  },
+  {
+    "nummer": "1156",
+    "typ": "VDL GBEL"
+  },
+  {
+    "nummer": "1157",
+    "typ": "VDL GBEL"
+  },
+  {
+    "nummer": "1158",
+    "typ": "VDL GBEL"
+  },
+  {
+    "nummer": "1159",
+    "typ": "VDL GBEL"
+  },
+  {
+    "nummer": "1160",
+    "typ": "VDL GBEL"
+  },
+  {
+    "nummer": "1161",
+    "typ": "VDL GBEL"
+  },
+  {
+    "nummer": "1162",
+    "typ": "VDL GBEL"
+  },
+  {
+    "nummer": "1163",
+    "typ": "VDL GBEL"
+  },
+  {
+    "nummer": "1164",
+    "typ": "VDL GBEL"
+  },
+  {
+    "nummer": "1165",
+    "typ": "VDL GBEL"
+  },
+  {
+    "nummer": "1166",
+    "typ": "VDL GBEL"
+  }
+]

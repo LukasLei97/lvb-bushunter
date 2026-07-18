@@ -1,69 +1,97 @@
-const gesamt = 186;
-let gesammelt = 0;
+let fahrzeuge = [];
 
-const progressFill = document.getElementById("progressFill");
+const vehicleList = document.getElementById("vehicleList");
+const progress = document.getElementById("progress");
 const progressText = document.getElementById("progressText");
-const fahrzeugListe = document.getElementById("fahrzeugListe");
+const suche = document.getElementById("search");
 
-const fahrzeuge = [
-    "1221",
-    "1222",
-    "1223",
-    "1224",
-    "1225",
-    "1226",
-    "1227",
-    "1228",
-    "1229",
-    "1230"
-];
+let gesammelt = JSON.parse(localStorage.getItem("gesammelt")) || [];
 
-function anzeigen() {
+function speichern() {
+    localStorage.setItem("gesammelt", JSON.stringify(gesammelt));
+}
 
-    fahrzeugListe.innerHTML = "";
+async function ladeFahrzeuge() {
+    const antwort = await fetch("fahrzeuge.json");
+    fahrzeuge = await antwort.json();
 
-    fahrzeuge.forEach(bus => {
+    anzeigen();
 
-        const div = document.createElement("div");
+    suche.addEventListener("input", (e) => {
+        anzeigen(e.target.value.toLowerCase());
+    });
+}
 
-        div.style.padding = "12px";
-        div.style.marginBottom = "10px";
-        div.style.borderRadius = "12px";
-        div.style.background = "#334155";
-        div.style.cursor = "pointer";
+function anzeigen(filter = "") {
 
-        div.innerHTML = "☐ " + bus;
+    vehicleList.innerHTML = "";
 
-        div.onclick = () => {
+    const gruppen = {};
 
-            if(div.innerHTML.startsWith("☐")){
-                div.innerHTML = "☑ " + bus;
-                gesammelt++;
-            }else{
-                div.innerHTML = "☐ " + bus;
-                gesammelt--;
-            }
+    fahrzeuge.forEach(fahrzeug => {
 
-            update();
-
+        if (
+            !fahrzeug.nummer.toLowerCase().includes(filter) &&
+            !fahrzeug.typ.toLowerCase().includes(filter)
+        ) {
+            return;
         }
 
-        fahrzeugListe.appendChild(div);
+        if (!gruppen[fahrzeug.typ]) {
+            gruppen[fahrzeug.typ] = [];
+        }
 
+        gruppen[fahrzeug.typ].push(fahrzeug);
     });
 
+    Object.keys(gruppen).forEach(typ => {
+
+        const details = document.createElement("details");
+        details.open = true;
+
+        const summary = document.createElement("summary");
+        summary.textContent = `${typ} (${gruppen[typ].length})`;
+        details.appendChild(summary);
+
+        gruppen[typ].forEach(fahrzeug => {
+
+            const div = document.createElement("div");
+            div.className = "vehicle";
+
+            if (gesammelt.includes(fahrzeug.nummer)) {
+                div.classList.add("checked");
+            }
+
+            div.innerHTML = `
+                <strong>🚌 ${fahrzeug.nummer}</strong><br>
+                <small>${fahrzeug.typ}</small>
+            `;
+
+            div.onclick = () => {
+
+                if (gesammelt.includes(fahrzeug.nummer)) {
+                    gesammelt = gesammelt.filter(x => x !== fahrzeug.nummer);
+                } else {
+                    gesammelt.push(fahrzeug.nummer);
+                }
+
+                speichern();
+                anzeigen(suche.value.toLowerCase());
+            };
+
+            details.appendChild(div);
+        });
+
+        vehicleList.appendChild(details);
+    });
+
+    const prozent = fahrzeuge.length
+        ? (gesammelt.length / fahrzeuge.length) * 100
+        : 0;
+
+    progress.style.width = prozent + "%";
+    progressText.textContent =
+        `${gesammelt.length} von ${fahrzeuge.length} Fahrzeugen`;
 }
 
-function update(){
-
-    let prozent = gesammelt / gesamt * 100;
-
-    progressFill.style.width = prozent + "%";
-
-    progressText.innerHTML =
-        gesammelt + " / " + gesamt + " Fahrzeuge";
-
-}
-
-anzeigen();
-update();
+ladeFahrzeuge();

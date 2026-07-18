@@ -1,52 +1,67 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BusHunter Leipzig</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚌 BusHunter Leipzig</title>
 
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+
+    <meta name="theme-color" content="#0f172a">
 </head>
 <body>
 
 <header>
-  <h1>🚍 BusHunter Leipzig</h1>
-  <p>Die Bus-Challenge</p>
+    <h1>🚌 BusHunter Leipzig</h1>
+    <p>Alle Fahrzeuge sammeln</p>
 </header>
 
 <main>
 
-  <section class="card">
-    <h2>Fortschritt</h2>
+    <section class="card">
 
-    <div class="progress">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
+        <h2>📊 Übersicht</h2>
 
-    <p id="progressText">0 / 186 Fahrzeuge</p>
-  </section>
+        <div class="stats">
 
-  <section class="card">
+            <div class="stat">
+                <span id="gesamt">0</span>
+                <small>Fahrzeuge</small>
+            </div>
 
-    <input
-      type="text"
-      id="search"
-      placeholder="🔍 Fahrzeug suchen...">
+            <div class="stat">
+                <span id="gefahren">0</span>
+                <small>Gefahren</small>
+            </div>
 
-  </section>
+            <div class="stat">
+                <span id="offen">0</span>
+                <small>Offen</small>
+            </div>
 
-  <section class="card">
+        </div>
 
-    <h2>Fahrzeuge</h2>
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
 
-    <div id="fahrzeugListe">
+        <p id="progressText">0 % abgeschlossen</p>
 
-      <p>Die Fahrzeugliste wird im nächsten Schritt geladen.</p>
+    </section>
 
-    </div>
+    <section class="card">
 
-  </section>
+        <input
+            type="text"
+            id="search"
+            placeholder="🔍 Fahrzeug oder Typ suchen...">
+
+    </section>
+
+    <section class="card">
+        <div id="vehicleList"></div>
+    </section>
 
 </main>
 
