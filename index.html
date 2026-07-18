@@ -14,18 +14,13 @@
 <body>
 
 <header class="app-header">
-
     <h1>🚌 BusHunter Leipzig</h1>
-
-    <p id="welcomeText">
-        Willkommen zurück 👋
-    </p>
-
+    <p id="welcomeText">Willkommen 👋</p>
 </header>
 
 <main>
 
-    <!-- START -->
+    <!-- Startseite -->
     <section id="homePage">
 
         <section class="card">
@@ -60,45 +55,39 @@
         </section>
 
         <section class="card">
-
             <input
                 id="search"
                 type="text"
                 placeholder="🔍 Fahrzeug suchen">
-
         </section>
 
         <section class="card">
-
             <h2>📈 Fahrzeugtypen</h2>
-
             <div id="typeStats"></div>
-
         </section>
 
         <section class="card">
-
             <div id="vehicleList"></div>
-
         </section>
 
     </section>
 
-    <!-- STATISTIK -->
+    <!-- Statistik -->
 
     <section id="statsPage" hidden>
 
         <div class="card">
-
             <h2>📊 Statistik</h2>
 
-            <p>Diese Seite bekommt Diagramme und Auswertungen.</p>
+            <div id="statsContent">
+                Wird geladen...
+            </div>
 
         </div>
 
     </section>
 
-    <!-- RANGLISTE -->
+    <!-- Rangliste -->
 
     <section id="rankingPage" hidden>
 
@@ -106,13 +95,15 @@
 
             <h2>🏆 Rangliste</h2>
 
-            <p>Noch nicht eingerichtet.</p>
+            <div id="rankingList">
+                Wird geladen...
+            </div>
 
         </div>
 
     </section>
 
-    <!-- EINSTELLUNGEN -->
+    <!-- Einstellungen -->
 
     <section id="settingsPage" hidden>
 
@@ -120,7 +111,9 @@
 
             <h2>⚙️ Einstellungen</h2>
 
-            <p>Kommt in Version 3.1.</p>
+            <button id="logoutButton">
+                Fahrer wechseln
+            </button>
 
         </div>
 
