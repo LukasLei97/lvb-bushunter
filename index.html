@@ -5,67 +5,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🚌 BusHunter Leipzig</title>
 
+    <meta name="theme-color" content="#0f172a">
+
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
-
-    <meta name="theme-color" content="#0f172a">
 </head>
+
 <body>
 
-<header>
+<header class="app-header">
+
     <h1>🚌 BusHunter Leipzig</h1>
-    <p>Alle Fahrzeuge sammeln</p>
+
+    <p id="welcomeText">
+        Willkommen zurück 👋
+    </p>
+
 </header>
 
 <main>
 
-    <section class="card">
+    <!-- START -->
+    <section id="homePage">
 
-        <h2>📊 Übersicht</h2>
+        <section class="card">
 
-        <div class="stats">
+            <h2>📊 Übersicht</h2>
 
-            <div class="stat">
-                <span id="gesamt">0</span>
-                <small>Fahrzeuge</small>
+            <div class="progress-bar">
+                <div id="progress"></div>
             </div>
 
-            <div class="stat">
-                <span id="gefahren">0</span>
-                <small>Gefahren</small>
+            <p id="progressText">0 % abgeschlossen</p>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <span id="gesamt">0</span>
+                    <small>Fahrzeuge</small>
+                </div>
+
+                <div class="stat">
+                    <span id="gefahren">0</span>
+                    <small>Gefahren</small>
+                </div>
+
+                <div class="stat">
+                    <span id="offen">0</span>
+                    <small>Offen</small>
+                </div>
+
             </div>
 
-            <div class="stat">
-                <span id="offen">0</span>
-                <small>Offen</small>
-            </div>
+        </section>
 
-        </div>
+        <section class="card">
 
-        <div class="progress-bar">
-            <div id="progress"></div>
-        </div>
+            <input
+                id="search"
+                type="text"
+                placeholder="🔍 Fahrzeug suchen">
 
-        <p id="progressText">0 % abgeschlossen</p>
+        </section>
+
+        <section class="card">
+
+            <h2>📈 Fahrzeugtypen</h2>
+
+            <div id="typeStats"></div>
+
+        </section>
+
+        <section class="card">
+
+            <div id="vehicleList"></div>
+
+        </section>
 
     </section>
 
-    <section class="card">
+    <!-- STATISTIK -->
 
-        <input
-            type="text"
-            id="search"
-            placeholder="🔍 Fahrzeug oder Typ suchen...">
+    <section id="statsPage" hidden>
+
+        <div class="card">
+
+            <h2>📊 Statistik</h2>
+
+            <p>Diese Seite bekommt Diagramme und Auswertungen.</p>
+
+        </div>
 
     </section>
 
-    <section class="card">
-        <div id="vehicleList"></div>
+    <!-- RANGLISTE -->
+
+    <section id="rankingPage" hidden>
+
+        <div class="card">
+
+            <h2>🏆 Rangliste</h2>
+
+            <p>Noch nicht eingerichtet.</p>
+
+        </div>
+
+    </section>
+
+    <!-- EINSTELLUNGEN -->
+
+    <section id="settingsPage" hidden>
+
+        <div class="card">
+
+            <h2>⚙️ Einstellungen</h2>
+
+            <p>Kommt in Version 3.1.</p>
+
+        </div>
+
     </section>
 
 </main>
 
-<script src="app.js"></script>
+<nav class="bottom-nav">
+
+    <button id="navHome" class="active">
+        🏠
+        <span>Start</span>
+    </button>
+
+    <button id="navStats">
+        📊
+        <span>Statistik</span>
+    </button>
+
+    <button id="navRanking">
+        🏆
+        <span>Rangliste</span>
+    </button>
+
+    <button id="navSettings">
+        ⚙️
+        <span>Einstellungen</span>
+    </button>
+
+</nav>
+
+<script type="module" src="js/app.js"></script>
 
 </body>
 </html>

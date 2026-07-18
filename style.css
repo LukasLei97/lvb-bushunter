@@ -1,49 +1,73 @@
+/* ========= Grundlayout ========= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+:root{
+    --bg:#0f172a;
+    --card:#1e293b;
+    --card2:#334155;
+    --green:#22c55e;
+    --green-dark:#15803d;
+    --text:#ffffff;
+    --muted:#94a3b8;
+    --shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#0f172a;
-    color:white;
-    padding:20px;
+    background:var(--bg);
+    color:var(--text);
+    padding-bottom:90px;
 }
 
-header{
+/* ========= Header ========= */
+
+.app-header{
     text-align:center;
-    margin-bottom:25px;
+    padding:30px 20px;
 }
 
-header h1{
+.app-header h1{
     font-size:2rem;
     margin-bottom:8px;
 }
 
-header p{
-    color:#cbd5e1;
+.app-header p{
+    color:var(--muted);
+}
+
+/* ========= Inhalt ========= */
+
+main{
+    width:min(900px,95%);
+    margin:auto;
 }
 
 .card{
-    background:#1e293b;
+    background:var(--card);
     border-radius:18px;
     padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 6px 20px rgba(0,0,0,.25);
+    margin-bottom:18px;
+    box-shadow:var(--shadow);
 }
 
+/* ========= Dashboard ========= */
+
 .stats{
-    display:flex;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
     gap:12px;
-    margin:20px 0;
+    margin-top:18px;
 }
 
 .stat{
-    flex:1;
-    background:#334155;
+    background:var(--card2);
     border-radius:14px;
-    padding:18px;
+    padding:16px;
     text-align:center;
 }
 
@@ -51,27 +75,28 @@ header p{
     display:block;
     font-size:2rem;
     font-weight:bold;
-    color:#22c55e;
+    color:var(--green);
 }
 
 .stat small{
-    color:#cbd5e1;
+    color:var(--muted);
 }
 
+/* ========= Fortschritt ========= */
+
 .progress-bar{
-    width:100%;
     height:18px;
-    background:#334155;
+    background:var(--card2);
     border-radius:999px;
     overflow:hidden;
-    margin:15px 0;
+    margin:18px 0 10px;
 }
 
 #progress{
     width:0%;
     height:100%;
-    background:#22c55e;
-    transition:.3s;
+    background:linear-gradient(90deg,#16a34a,#22c55e);
+    transition:width .35s ease;
 }
 
 #progressText{
@@ -79,47 +104,158 @@ header p{
     font-weight:bold;
 }
 
+/* ========= Suche ========= */
+
 #search{
     width:100%;
-    padding:14px;
+    padding:14px 16px;
+    background:var(--card2);
+    color:white;
     border:none;
     border-radius:12px;
-    font-size:1rem;
     outline:none;
+    font-size:1rem;
 }
 
-details{
+#search::placeholder{
+    color:var(--muted);
+}
+
+/* ========= Fahrzeugtyp ========= */
+
+.type-stat{
     margin-bottom:18px;
+}
+
+.type-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:6px;
+    font-weight:bold;
+}
+
+.type-progress{
+    background:var(--card2);
+    height:10px;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.type-fill{
+    height:100%;
+    background:linear-gradient(90deg,#3b82f6,#22c55e);
+    width:0%;
+    transition:.3s;
+}
+
+/* ========= Gruppen ========= */
+
+details{
+    margin-bottom:14px;
 }
 
 summary{
     list-style:none;
     cursor:pointer;
-    background:#334155;
     padding:14px;
     border-radius:12px;
+    background:var(--card2);
     font-weight:bold;
-    font-size:1.05rem;
-    margin-bottom:10px;
 }
 
+summary::-webkit-details-marker{
+    display:none;
+}
+
+/* ========= Fahrzeuge ========= */
+
 .vehicle{
-    background:#334155;
-    padding:14px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+    background:#263447;
     border-radius:12px;
-    margin-bottom:8px;
+    margin-top:10px;
     cursor:pointer;
     transition:.2s;
 }
 
 .vehicle:hover{
-    background:#475569;
+    transform:translateY(-2px);
+    background:#334155;
 }
 
 .vehicle.checked{
-    background:#15803d;
+    border-left:6px solid var(--green);
 }
 
-small{
-    color:#cbd5e1;
+.vehicle-info{
+    display:flex;
+    flex-direction:column;
+}
+
+.vehicle-number{
+    font-size:1.1rem;
+    font-weight:bold;
+}
+
+.vehicle-type{
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+.checkmark{
+    font-size:1.5rem;
+}
+
+/* ========= Navigation ========= */
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:var(--card);
+    border-top:1px solid var(--card2);
+    display:flex;
+    justify-content:space-around;
+    padding:10px 0;
+}
+
+.bottom-nav button{
+    background:none;
+    border:none;
+    color:var(--muted);
+    font-size:1.2rem;
+    cursor:pointer;
+    flex:1;
+}
+
+.bottom-nav span{
+    display:block;
+    font-size:.75rem;
+    margin-top:4px;
+}
+
+.bottom-nav .active{
+    color:var(--green);
+}
+
+/* ========= Handy ========= */
+
+@media(max-width:700px){
+
+.stats{
+    grid-template-columns:1fr;
+}
+
+.vehicle{
+    padding:12px;
+}
+
+.app-header h1{
+    font-size:1.6rem;
+}
+
 }
