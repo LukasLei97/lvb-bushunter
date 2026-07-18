@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BusHunter Leipzig</title>
 
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>🚍 BusHunter Leipzig</h1>
+  <p>Die Bus-Challenge</p>
+</header>
+
+<main>
+
+  <section class="card">
+    <h2>Fortschritt</h2>
+
+    <div class="progress">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <p id="progressText">0 / 186 Fahrzeuge</p>
+  </section>
+
+  <section class="card">
+
+    <input
+      type="text"
+      id="search"
+      placeholder="🔍 Fahrzeug suchen...">
+
+  </section>
+
+  <section class="card">
+
+    <h2>Fahrzeuge</h2>
+
+    <div id="fahrzeugListe">
+
+      <p>Die Fahrzeugliste wird im nächsten Schritt geladen.</p>
+
+    </div>
+
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+
+</body>
+</html>
