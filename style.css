@@ -9,40 +9,27 @@
 }
 
 :root{
-
-    --bg:#0b1220;
-
-    --card:#cfd5df;
-    --card2:#bcc4d1;
-
-    --primary:#2563eb;
-    --primaryDark:#1d4ed8;
-
-    --success:#22c55e;
-    --danger:#dc2626;
-    --warning:#f59e0b;
-
-    --text:#111827;
-    --textLight:#475569;
-
-    --shadow:0 12px 30px rgba(0,0,0,.30);
-
-    --radius:18px;
-
+    --bg:#0f172a;
+    --card:#1e293b;
+    --card2:#334155;
+    --green:#22c55e;
+    --green-dark:#15803d;
+    --text:#ffffff;
+    --muted:#94a3b8;
+    --primary:#3b82f6;
+    --textLight:#cbd5e1;
+    --shadow:0 12px 30px rgba(0,0,0,.35);
 }
+
+
 
 body{
-
-    font-family:"Segoe UI",Roboto,Arial,sans-serif;
-
-    background:linear-gradient(180deg,#0b1220,#16233b);
-    background-attachment:fixed;
-
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
     color:var(--text);
-
     padding-bottom:90px;
-
 }
+
 
 main{
 
@@ -132,7 +119,12 @@ h2{
 
 .dashboardCard{
 
-    background:linear-gradient(180deg,#bfc8d6,#aeb8c7);
+    background:linear-gradient(
+        180deg,
+        #162033,
+        #1f2b42
+    );
+    border:1px solid rgba(59,130,246,.15);
 
 }
 
@@ -151,7 +143,7 @@ h2{
 
 .dashboardStat{
 
-    background:var(--card2);
+    background:#1f2b42;
 
     border-radius:16px;
 
@@ -186,7 +178,7 @@ h2{
 .progress-bar{
     width:100%;
     height:20px;
-    background:#e2e8f0;
+    background:#475569;
     border-radius:999px;
     overflow:hidden;
 }
@@ -214,14 +206,14 @@ h2{
     padding:16px 18px;
     border:none;
     border-radius:14px;
-    background:#c6cfdb;
+    background:#1f2b42;
     font-size:16px;
     outline:none;
     transition:.2s;
 }
 
 #search:focus{
-    background:var(--card2);
+    background:#1f2b42;
     box-shadow:0 0 0 3px rgba(25,118,210,.2);
 }
 
@@ -299,7 +291,7 @@ h2{
 
 .vehicle.done{
 
-    background:#e8f5e9;
+    background:#1e3a8a;
 
     border-color:#43a047;
 
@@ -358,7 +350,7 @@ h2{
 .typeBar{
     width:100%;
     height:10px;
-    background:#e2e8f0;
+    background:#475569;
     border-radius:999px;
     overflow:hidden;
 }
@@ -381,7 +373,7 @@ h2{
 }
 
 .statCard{
-    background:var(--card2);
+    background:#1f2b42;
     border-radius:16px;
     padding:18px;
     box-shadow:0 2px 8px rgba(0,0,0,.05);
@@ -411,7 +403,7 @@ h2{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    background:var(--card2);
+    background:#1f2b42;
     padding:16px;
     border-radius:16px;
     box-shadow:0 2px 8px rgba(0,0,0,.05);
@@ -470,7 +462,7 @@ h2{
 }
 
 .settingItem{
-    background:var(--card2);
+    background:#1f2b42;
     padding:16px;
     border-radius:14px;
 }
@@ -503,7 +495,7 @@ h2{
     justify-content:space-around;
     align-items:center;
 
-    background:#bfc8d6;
+    background:#162033;
 
     padding:10px 0;
 
@@ -584,7 +576,7 @@ button:active{
 
 ::-webkit-scrollbar-thumb{
 
-    background:#cbd5e1;
+    background:#475569;
 
     border-radius:20px;
 
@@ -716,7 +708,7 @@ body.dark{
 
     width:min(430px,92vw);
 
-    background:var(--card2);
+    background:#1f2b42;
 
     border-radius:30px;
 
@@ -762,7 +754,7 @@ body.dark{
 
     border:none;
 
-    background:var(--card2);
+    background:#1f2b42;
 
     border-radius:18px;
 
@@ -786,7 +778,7 @@ body.dark{
 
     transform:translateY(-2px);
 
-    background:#cfd8e6;
+    background:#24324a;
 
 }
 
@@ -895,7 +887,7 @@ details summary{
     font-weight:700;
     font-size:17px;
     padding:12px 16px;
-    background:#bfc8d6;
+    background:#162033;
     border-radius:14px;
     margin:10px 0;
     display:flex;
@@ -918,7 +910,7 @@ details[open] summary::before{
     content:"▼";
 }
 details summary:hover{
-    background:#c6cfdb;
+    background:#1f2b42;
 }
 #typeStatsDetails{
     border:none;
