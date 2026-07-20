@@ -1,28 +1,11 @@
-// js/login.js
-
 import { savePlayer, loadPlayer } from "./storage.js";
 
 const fahrer = [
-    {
-        id: "Lukas",
-        farbe: "#1976d2"
-    },
-    {
-        id: "Tim",
-        farbe: "#43a047"
-    },
-    {
-        id: "John",
-        farbe: "#f9a825"
-    },
-    {
-        id: "Victoria",
-        farbe: "#8e24aa"
-    },
-    {
-        id: "Florian",
-        farbe: "#e53935"
-    }
+    { id: "Lukas", farbe: "#1976d2" },
+    { id: "Tim", farbe: "#43a047" },
+    { id: "John", farbe: "#f9a825" },
+    { id: "Victoria", farbe: "#8e24aa" },
+    { id: "Florian", farbe: "#e53935" }
 ];
 
 export function showLogin(callback) {
@@ -38,13 +21,21 @@ export function showLogin(callback) {
     overlay.id = "loginOverlay";
 
     overlay.innerHTML = `
-        <div class="loginBox">
+        <div class="loginScreen">
 
-            <h1>🚌 BusHunter Leipzig</h1>
+            <div class="loginLogo">🚌</div>
 
-            <p>Wer fährt heute?</p>
+            <h1>BusHunter Leipzig</h1>
+
+            <p class="loginSubtitle">
+                Wer fährt heute?
+            </p>
 
             <div id="fahrerButtons"></div>
+
+            <div class="loginVersion">
+                Version 4.2
+            </div>
 
         </div>
     `;
@@ -53,15 +44,25 @@ export function showLogin(callback) {
 
     const container = document.getElementById("fahrerButtons");
 
-    fahrer.forEach((fahrer) => {
+    fahrer.forEach(fahrer => {
 
-        const btn = document.createElement("button");
+        const button = document.createElement("button");
 
-        btn.className = "driverButton";
-        btn.style.background = fahrer.farbe;
-        btn.textContent = fahrer.id;
+        button.className = "driverButton";
 
-        btn.onclick = () => {
+        button.innerHTML = `
+            <div class="driverLeft">
+                <div class="driverCircle" style="background:${fahrer.farbe}">
+                    👤
+                </div>
+
+                <span>${fahrer.id}</span>
+            </div>
+
+            <div class="driverArrow">➜</div>
+        `;
+
+        button.onclick = () => {
 
             savePlayer(fahrer.id);
 
@@ -71,7 +72,7 @@ export function showLogin(callback) {
 
         };
 
-        container.appendChild(btn);
+        container.appendChild(button);
 
     });
 

@@ -711,4 +711,177 @@ body.dark{
     --text:#f8fafc;
     --textLight:#cbd5e1;
 
+}/* =====================================
+   LOGIN
+===================================== */
+
+#loginOverlay{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(135deg,#1565c0,#1e88e5);
+
+    z-index:99999;
+
+}
+
+.loginScreen{
+
+    width:min(430px,92vw);
+
+    background:white;
+
+    border-radius:30px;
+
+    padding:35px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.25);
+
+    animation:loginFade .35s;
+
+}
+
+.loginLogo{
+
+    font-size:70px;
+
+    text-align:center;
+
+}
+
+.loginScreen h1{
+
+    text-align:center;
+
+    margin-top:10px;
+
+    margin-bottom:5px;
+
+}
+
+.loginSubtitle{
+
+    text-align:center;
+
+    color:#64748b;
+
+    margin-bottom:30px;
+
+}
+
+.driverButton{
+
+    width:100%;
+
+    border:none;
+
+    background:#f8fafc;
+
+    border-radius:18px;
+
+    padding:16px 18px;
+
+    margin-bottom:14px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    transition:.2s;
+
+}
+
+.driverButton:hover{
+
+    transform:translateY(-2px);
+
+    background:#eef4ff;
+
+}
+
+.driverLeft{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.driverCircle{
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+    font-size:20px;
+
+}
+
+.driverLeft span{
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+.driverArrow{
+
+    font-size:22px;
+
+    color:#1976d2;
+
+}
+
+.loginVersion{
+
+    margin-top:20px;
+
+    text-align:center;
+
+    color:#94a3b8;
+
+    font-size:13px;
+
+}
+
+@keyframes loginFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
 }
