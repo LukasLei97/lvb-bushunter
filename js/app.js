@@ -2,6 +2,7 @@ import { initVehicles, renderVehicles } from "./vehicles.js";
 import { setSearch } from "./search.js";
 import { initRanking } from "./ranking.js";
 import { showLogin } from "./login.js";
+import { removePlayer, clearLocal } from "./storage.js";
 
 // ===============================
 // Navigation
@@ -21,40 +22,35 @@ const buttons = {
     settings: document.getElementById("navSettings")
 };
 
-function showPage(page){
+function showPage(page) {
 
-    Object.values(pages).forEach(p=>{
-        if(p)p.hidden=true;
+    Object.values(pages).forEach(p => {
+        if (p) p.hidden = true;
     });
 
-    Object.values(buttons).forEach(b=>{
-        if(b)b.classList.remove("active");
+    Object.values(buttons).forEach(b => {
+        if (b) b.classList.remove("active");
     });
 
-    if(pages[page]){
-        pages[page].hidden=false;
-    }
-
-    if(buttons[page]){
-        buttons[page].classList.add("active");
-    }
+    pages[page].hidden = false;
+    buttons[page].classList.add("active");
 
 }
 
-buttons.home.onclick=()=>showPage("home");
-buttons.stats.onclick=()=>showPage("stats");
-buttons.ranking.onclick=()=>showPage("ranking");
-buttons.settings.onclick=()=>showPage("settings");
+buttons.home.onclick = () => showPage("home");
+buttons.stats.onclick = () => showPage("stats");
+buttons.ranking.onclick = () => showPage("ranking");
+buttons.settings.onclick = () => showPage("settings");
 
 // ===============================
 // Suche
 // ===============================
 
-const search=document.getElementById("search");
+const search = document.getElementById("search");
 
-if(search){
+if (search) {
 
-    search.addEventListener("input",(e)=>{
+    search.addEventListener("input", e => {
 
         setSearch(e.target.value);
 
@@ -65,17 +61,48 @@ if(search){
 }
 
 // ===============================
+// Fahrer wechseln
+// ===============================
+
+const logoutButton = document.getElementById("logoutButton");
+
+if (logoutButton) {
+
+    logoutButton.onclick = () => {
+
+        if (!confirm("Fahrer wirklich wechseln?")) {
+            return;
+        }
+
+        // Fahrer löschen
+        removePlayer();
+
+        // Lokale Fahrzeugliste leeren
+        clearLocal();
+
+        // Seite neu laden
+        location.reload();
+
+    };
+
+}
+
+// ===============================
 // App starten
 // ===============================
 
-showLogin(async(player)=>{
+showLogin(async (player) => {
 
-    const welcome=document.getElementById("welcomeText");
+    const welcome = document.getElementById("welcomeText");
 
-    if(welcome){
+    if (welcome) {
+        welcome.textContent = `Hallo ${player} 👋`;
+    }
 
-        welcome.textContent=`Hallo ${player} 👋`;
+    const currentPlayer = document.getElementById("currentPlayer");
 
+    if (currentPlayer) {
+        currentPlayer.textContent = player;
     }
 
     showPage("home");

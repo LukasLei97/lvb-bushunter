@@ -20,7 +20,7 @@ export async function initVehicles(playerName) {
 
     renderVehicles();
 
-    watchPlayer(spieler, (online) => {
+    watchPlayer(spieler, online => {
 
         gesammelt = online;
 
@@ -61,48 +61,51 @@ export function renderVehicles() {
         .forEach(typ => {
 
             const details = document.createElement("details");
-
             details.open = true;
 
             const summary = document.createElement("summary");
-
-            summary.textContent =
-                typ + " (" + gruppen[typ].length + ")";
+            summary.textContent = `${typ} (${gruppen[typ].length})`;
 
             details.appendChild(summary);
 
             gruppen[typ].forEach(bus => {
 
-                const card = document.createElement("div");
+                const gefahren = gesammelt.includes(bus.nummer);
 
+                const card = document.createElement("div");
                 card.className = "vehicle";
 
-                if (gesammelt.includes(bus.nummer)) {
-
+                if (gefahren) {
                     card.classList.add("done");
-
                 }
 
-                const nummer = document.createElement("div");
+                card.innerHTML = `
 
-                nummer.className = "number";
+                    <div class="vehicleLeft">
 
-                nummer.textContent = bus.nummer;
+                        <div class="vehicleNumber">
+                            🚌 ${bus.nummer}
+                        </div>
 
-                const status = document.createElement("div");
+                        <div class="vehicleType">
+                            ${bus.typ}
+                        </div>
 
-                status.className = "status";
+                    </div>
 
-                status.textContent =
-                    gesammelt.includes(bus.nummer)
-                        ? "✅ Gefahren"
-                        : "⬜ Offen";
+                    <div class="vehicleRight">
 
-                card.appendChild(nummer);
+                        <div class="vehicleStatus">
 
-                card.appendChild(status);
+                            ${gefahren ? "✅" : "⬜"}
 
-                card.onclick = async () => {
+                        </div>
+
+                    </div>
+
+                `;
+
+                card.onclick = () => {
 
                     toggleBus(bus.nummer);
 
@@ -119,6 +122,7 @@ export function renderVehicles() {
     updateStats();
 
 }
+
 function toggleBus(busNummer) {
 
     if (gesammelt.includes(busNummer)) {
@@ -139,11 +143,10 @@ function toggleBus(busNummer) {
 
 function updateStats() {
 
-    const gesamt = fahrzeuge.length;
-
-    const gefahren = gesammelt.length;
-
-    updateDashboard(gesamt, gefahren);
+    updateDashboard(
+        fahrzeuge.length,
+        gesammelt.length
+    );
 
     updateTypeStats();
 
@@ -187,7 +190,7 @@ function updateTypeStats() {
             const daten = typen[typ];
 
             const prozent = Math.round(
-                (daten.gefahren / daten.gesamt) * 100
+                daten.gefahren / daten.gesamt * 100
             );
 
             const card = document.createElement("div");
@@ -196,20 +199,24 @@ function updateTypeStats() {
 
             card.innerHTML = `
 
-                <h3>${typ}</h3>
+                <div class="typeHeader">
 
-                <p>${daten.gefahren} / ${daten.gesamt}</p>
+                    <strong>${typ}</strong>
 
-                <div class="typeProgress">
+                    <strong>${prozent}%</strong>
+
+                </div>
+
+                <div class="typeBar">
 
                     <div
-                        class="typeProgressBar"
+                        class="typeBarFill"
                         style="width:${prozent}%">
                     </div>
 
                 </div>
 
-                <span>${prozent}%</span>
+                <p>${daten.gefahren} von ${daten.gesamt} Fahrzeugen</p>
 
             `;
 
