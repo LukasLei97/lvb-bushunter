@@ -130,4 +130,20 @@ export function watchRanking(callback) {
 
     });
 
+}export async function resetAllPlayers() {
+
+    const spieler = [
+        "Lukas",
+        "Tim",
+        "John",
+        "Victoria",
+        "Florian"
+    ];
+
+    for (const name of spieler) {
+
+        await savePlayerData(name, []);
+
+    }
+
 }

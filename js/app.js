@@ -3,7 +3,7 @@ import { setSearch } from "./search.js";
 import { initRanking } from "./ranking.js";
 import { showLogin } from "./login.js";
 import { removePlayer, clearLocal } from "./storage.js";
-
+import { resetAllPlayers } from "./firebase.js";
 // ===============================
 // Navigation
 // ===============================
@@ -74,13 +74,8 @@ if (logoutButton) {
             return;
         }
 
-        // Fahrer löschen
         removePlayer();
-
-        // Lokale Fahrzeugliste leeren
         clearLocal();
-
-        // Seite neu laden
         location.reload();
 
     };
@@ -103,6 +98,66 @@ showLogin(async (player) => {
 
     if (currentPlayer) {
         currentPlayer.textContent = player;
+    }
+
+    // ===============================
+    // Adminbereich nur für Lukas
+    // ===============================
+
+    if (player === "Lukas") {
+
+        const settingsList = document.querySelector(".settingsList");
+
+        const adminButton = document.createElement("button");
+
+        adminButton.id = "resetAllButton";
+        adminButton.className = "dangerButton";
+        adminButton.textContent = "🗑️ Alle Statistiken zurücksetzen";
+
+        adminButton.onclick = async () => {
+
+            const ok = confirm(
+`⚠️ ACHTUNG!
+
+Alle Statistiken werden gelöscht.
+
+• Lukas
+• Tim
+• John
+• Victoria
+• Florian
+
+Dieser Vorgang kann nicht rückgängig gemacht werden.
+
+Möchtest du fortfahren?`
+            );
+
+            if (!ok) return;
+
+            adminButton.disabled = true;
+            adminButton.textContent = "Zurücksetzen...";
+
+            try {
+
+                await resetAllPlayers();
+
+                alert("✅ Alle Statistiken wurden erfolgreich zurückgesetzt.");
+
+            } catch (e) {
+
+                console.error(e);
+
+                alert("❌ Fehler beim Zurücksetzen.");
+
+            }
+
+            adminButton.disabled = false;
+            adminButton.textContent = "🗑️ Alle Statistiken zurücksetzen";
+
+        };
+
+        settingsList.appendChild(adminButton);
+
     }
 
     showPage("home");

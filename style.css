@@ -885,3 +885,25 @@ body.dark{
     }
 
 }
+
+/* ==========================================
+   Admin Button
+========================================== */
+
+.dangerButton{
+    width:100%;
+    margin-top:16px;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:#e53935;
+    color:#fff;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+    box-shadow:0 4px 10px rgba(229,57,53,.25);
+}
+.dangerButton:hover{background:#c62828;transform:translateY(-2px);}
+.dangerButton:disabled{background:#bdbdbd;cursor:not-allowed;transform:none;box-shadow:none;}
+#adminArea{margin-top:10px;}
