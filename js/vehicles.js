@@ -61,7 +61,7 @@ export function renderVehicles() {
         .forEach(typ => {
 
             const details = document.createElement("details");
-            details.open = true;
+            details.open = false;
 
             const summary = document.createElement("summary");
             summary.textContent = `${typ} (${gruppen[typ].length})`;
